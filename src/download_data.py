@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 """
-Download all of the data from the library at Western Sydney University
+Download all of the data from the library at Western Sydney University...
 """
 
 import os
