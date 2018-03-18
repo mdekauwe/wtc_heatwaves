@@ -4,8 +4,6 @@
 Download all of the data from the library at Western Sydney University
 """
 
-import numpy as np
-import sys
 import os
 import io
 import zipfile

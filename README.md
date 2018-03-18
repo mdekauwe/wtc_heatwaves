@@ -1,4 +1,4 @@
-# wtc_heatwaves
+# Whole-Tree Chamber Heatwave Experiment
 
 Some cobbled together code to explore the heatwave experiment in the fourth whole-tree chamber at Western Sydney University.
 
