@@ -21,7 +21,6 @@ def main():
            "07fcd9ac-e132-11e7-b842-525400daae48/"
            "WTC_TEMP-PARRA_HEATWAVE-FLUX-PACKAGE_L1.zip")
 
-
     r = requests.get(url)
     z = zipfile.ZipFile(io.BytesIO(r.content))
     z.extractall()
