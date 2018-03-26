@@ -91,7 +91,7 @@ def main(fname):
     labels = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
     plt.setp(ax1.get_xticklabels(), visible=False)
     ax2.set_xticklabels(labels)
-
+    ax1.set_ylim(0, 45)
     ax1.set_ylabel('Temperature ($^\circ$C)')
     ax2.set_ylabel('VPD (kPa)')
 
