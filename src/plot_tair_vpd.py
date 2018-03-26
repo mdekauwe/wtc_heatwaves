@@ -67,6 +67,8 @@ def main(fname):
     width  = 9.0
     height = width / 1.618
     fig = plt.figure(figsize=(width, height))
+    fig.subplots_adjust(hspace=0.05)
+    fig.subplots_adjust(wspace=0.1)
     plt.rcParams['text.usetex'] = False
     plt.rcParams['font.family'] = "sans-serif"
     plt.rcParams['font.sans-serif'] = "Helvetica"
@@ -83,6 +85,8 @@ def main(fname):
     ax2.plot(df_ct.index, df_ct.VPD, ls="-", color="blue")
     ax2.plot(df_hw.index, df_hw.VPD, ls="-", color="red")
 
+    ax1.axvspan("2016-10-30", "2016-11-03", alpha=0.5, color='lightgrey')
+    ax2.axvspan("2016-10-30", "2016-11-03", alpha=0.5, color='lightgrey')
 
     labels = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
     plt.setp(ax1.get_xticklabels(), visible=False)
@@ -90,7 +94,7 @@ def main(fname):
 
     ax1.set_ylabel('Temperature ($^\circ$C)')
     ax2.set_ylabel('VPD (kPa)')
-    
+
     plt.show()
 
 def read_file(fname):
