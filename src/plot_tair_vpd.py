@@ -39,16 +39,16 @@ def main(fname):
                             as_index=False).agg(['mean', 'sem'])
 
     wtc_m = wtc_m.set_index('DateTime_hr')
-    wtc_m2_two = wtc_m[(wtc_m.index >= "2016-10-31") &
-                       (wtc_m.index <= "2016-11-06")].copy()
+    wtc_m2_two = wtc_m[(wtc_m.index >= "2016-10-30") &
+                       (wtc_m.index <= "2016-11-05")].copy()
     wtc_m2_two['dates'] = wtc_m2_two.index
     wtc_m2_two["month"] = wtc_m2_two.index.month
 
     df_ct = wtc_m2_two[wtc_m2_two["HWtrt"] == "C"]
     df_hw = wtc_m2_two[wtc_m2_two["HWtrt"] == "HW"]
 
-    df_ct = df_ct.groupby(['year','day','hour']).mean().reset_index()
-    df_hw = df_hw.groupby(['year','day','hour']).mean().reset_index()
+    df_ct = df_ct.groupby(['DateTime_hr']).mean().reset_index()
+    df_hw = df_hw.groupby(['DateTime_hr']).mean().reset_index()
 
     t1 = pd.datetime.strptime(df_ct['year'][0].astype(int).astype(str)+
                               df_ct['month'][0].astype(int).astype(str)+
@@ -83,9 +83,14 @@ def main(fname):
     ax2.plot(df_ct.index, df_ct.VPD, ls="-", color="blue")
     ax2.plot(df_hw.index, df_hw.VPD, ls="-", color="red")
 
+
+    labels = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
+    plt.setp(ax1.get_xticklabels(), visible=False)
+    ax2.set_xticklabels(labels)
+
     ax1.set_ylabel('Temperature ($^\circ$C)')
     ax2.set_ylabel('VPD (kPa)')
-    plt.gcf().autofmt_xdate()
+    
     plt.show()
 
 def read_file(fname):
