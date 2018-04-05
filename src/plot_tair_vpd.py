@@ -80,8 +80,8 @@ def main(fname):
 
     ax1 = fig.add_subplot(211)
     ax2 = fig.add_subplot(212)
-    ax1.plot(df_ct.index, df_ct.Tair_al, ls="-", color="blue")
-    ax1.plot(df_hw.index, df_hw.Tair_al, ls="-", color="red")
+    ax1.plot(df_ct.index, df_ct.Tair_al, ls="-", color="blue", label="Control")
+    ax1.plot(df_hw.index, df_hw.Tair_al, ls="-", color="red", label="Treatment")
     ax2.plot(df_ct.index, df_ct.VPD, ls="-", color="blue")
     ax2.plot(df_hw.index, df_hw.VPD, ls="-", color="red")
 
@@ -94,8 +94,9 @@ def main(fname):
     ax1.set_ylim(0, 45)
     ax1.set_ylabel('Temperature ($^\circ$C)')
     ax2.set_ylabel('VPD (kPa)')
-
-    plt.show()
+    ax1.legend(numpoints=1, loc="lower left")
+    fig.savefig("plots/tair_vpd.pdf", bbox_inches='tight', pad_inches=0.1)
+    #plt.show()
 
 def read_file(fname):
 
