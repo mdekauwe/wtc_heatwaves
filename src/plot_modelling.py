@@ -63,7 +63,7 @@ def main(fname):
     y = np.nan_to_num(y)
     xy = np.vstack([x, y])
     z = gaussian_kde(xy)(xy)
-    ax1.scatter(x, y,  c=z, s=25, edgecolor='', cmap='Blues')
+    ax1.scatter(x, y,  c=z, s=25, edgecolor='', cmap='Blues', alpha=0.7)
 
     x = df_hw.TargTempC_Avg
     y = df_hw.Photo
@@ -71,7 +71,7 @@ def main(fname):
     y = np.nan_to_num(y)
     xy = np.vstack([x, y])
     z = gaussian_kde(xy)(xy)
-    ax2.scatter(x, y,  c=z, s=25, edgecolor='', cmap='Reds')
+    ax2.scatter(x, y,  c=z, s=25, edgecolor='', cmap='Reds', alpha=0.7)
 
     x = df_ct.TargTempC_Avg
     y = df_ct.Trans
@@ -79,7 +79,7 @@ def main(fname):
     y = np.nan_to_num(y)
     xy = np.vstack([x, y])
     z = gaussian_kde(xy)(xy)
-    ax3.scatter(x, y,  c=z, s=25, edgecolor='', cmap='Blues')
+    ax3.scatter(x, y,  c=z, s=25, edgecolor='', cmap='Blues', alpha=0.7)
 
     x = df_hw.TargTempC_Avg
     y = df_hw.Trans
@@ -87,7 +87,7 @@ def main(fname):
     y = np.nan_to_num(y)
     xy = np.vstack([x, y])
     z = gaussian_kde(xy)(xy)
-    ax4.scatter(x, y,  c=z, s=25, edgecolor='', cmap='Reds')
+    ax4.scatter(x, y,  c=z, s=25, edgecolor='', cmap='Reds', alpha=0.7)
 
     ax1.set_ylim(0, 12)
     ax2.set_ylim(0, 12)
