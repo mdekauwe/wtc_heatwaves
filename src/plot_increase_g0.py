@@ -128,6 +128,9 @@ def main(fname):
     legend = ax1.get_legend()
     legend.legendHandles[0].set_color("red")
 
+    ax1.locator_params(nbins=4, axis='x')
+    ax1.locator_params(nbins=4, axis='y')
+
     ax1.set_ylim(0, 4)
     ax1.set_xlim(15, 50)
 

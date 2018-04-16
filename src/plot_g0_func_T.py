@@ -92,7 +92,6 @@ def main(fname):
         g0 = 0.003
         Tk = df_hw.Tair_al[i] + c.DEG_2_KELVIN
         g0 = arrh(g0, 100000, Tk)
-        print(0.003, g0)
         C = CoupledModel(g0, g1, D0, gamma, Vcmax25, Jmax25, Rd25,
                          Eaj, Eav,deltaSj, deltaSv, Hdv, Hdj, Q10, leaf_width,
                          SW_abs, gs_model="medlyn")
@@ -132,6 +131,9 @@ def main(fname):
     ax1.legend(scatterpoints=1, loc="upper right", frameon=False)
     legend = ax1.get_legend()
     legend.legendHandles[0].set_color("red")
+
+    ax1.locator_params(nbins=4, axis='x')
+    ax1.locator_params(nbins=4, axis='y')
 
     ax1.set_ylim(0, 4)
     ax1.set_xlim(15, 50)
