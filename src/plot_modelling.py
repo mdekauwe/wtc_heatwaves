@@ -66,12 +66,12 @@ def main(fname):
 
     # variables though obviously fixed here.
     wind = 8.0
-    pressure = 101325.0
+    pressure = 100.0 * c.KPA_2_PA
     g0 = 0.003
     g1 = 2.9
     Ca = 400.
-    D0 = 1.5 # kpa # Note used
-    gamma = 0.0
+    D0 = 1.5    # Not used
+    gamma = 0.0 # Not used
     C = CoupledModel(g0, g1, D0, gamma, Vcmax25, Jmax25, Rd25,
                      Eaj, Eav,deltaSj, deltaSv, Hdv, Hdj, Q10, leaf_width,
                      SW_abs, gs_model="medlyn")
@@ -97,8 +97,10 @@ def main(fname):
         Et_hw.append(et * c.MOL_2_MMOL) # mmol m-2 s-1
         An_hw.append(An)                # umol m-2 s-1
 
-
-    width  = 9.0
+    # roughly paper size
+    #width  = 8.0
+    #height = 8 #width / 1.618
+    width  = 10.0
     height = width / 1.618
     fig = plt.figure(figsize=(width, height))
     fig.subplots_adjust(hspace=0.1)
@@ -153,14 +155,25 @@ def main(fname):
     ax4.scatter(x, y,  c=z, s=25, edgecolor='', cmap='Reds', alpha=0.7)
     ax4.scatter(x, Et_hw, color='black', s=5, alpha=0.7)
 
-    ax1.set_ylim(0, 12)
-    ax2.set_ylim(0, 12)
+    ax1.set_ylim(0, 15)
+    ax2.set_ylim(0, 15)
     ax3.set_ylim(0, 4)
     ax4.set_ylim(0, 4)
-    ax1.set_xlim(15, 45)
-    ax2.set_xlim(15, 45)
-    ax3.set_xlim(15, 45)
-    ax4.set_xlim(15, 45)
+    ax1.set_xlim(15, 50)
+    ax2.set_xlim(15, 50)
+    ax3.set_xlim(15, 50)
+    ax4.set_xlim(15, 50)
+
+    ax1.locator_params(nbins=4, axis='y')
+    ax2.locator_params(nbins=4, axis='y')
+    ax2.locator_params(nbins=4, axis='y')
+    ax3.locator_params(nbins=4, axis='y')
+
+    ax1.locator_params(nbins=4, axis='x')
+    ax2.locator_params(nbins=4, axis='x')
+    ax2.locator_params(nbins=4, axis='x')
+    ax4.locator_params(nbins=4, axis='x')
+
     ax1.set_ylabel(u'A$_{canopy}$ (μmol m$^{-2}$ d$^{-1}$)')
     ax3.set_ylabel('E$_{canopy}$ (mmol m$^{-2}$ d$^{-1}$)')
     ax3.set_xlabel('Canopy temperature ($^\circ$C)', position=(1.0, 0.5))
