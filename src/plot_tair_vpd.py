@@ -80,8 +80,8 @@ def main(fname):
 
     ax1 = fig.add_subplot(211)
     ax2 = fig.add_subplot(212)
-    ax1.plot(df_ct.index, df_ct.Tair_al, ls="-", color="blue", label="Control")
-    ax1.plot(df_hw.index, df_hw.Tair_al, ls="-", color="red", label="Treatment")
+    ax1.plot(df_ct.index, df_ct.Tair_al, ls="-", color="blue", label="CT")
+    ax1.plot(df_hw.index, df_hw.Tair_al, ls="-", color="red", label="HW")
     ax2.plot(df_ct.index, df_ct.VPD, ls="-", color="blue")
     ax2.plot(df_hw.index, df_hw.VPD, ls="-", color="red")
 
