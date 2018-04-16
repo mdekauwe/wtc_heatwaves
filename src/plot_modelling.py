@@ -121,12 +121,23 @@ def main(fname):
 
     x = df_ct.TargTempC_Avg
     y = df_ct.Photo
+    dummy = np.ones(len(np.asarray(y.values))) * np.nan
+
     x = np.nan_to_num(x)
     y = np.nan_to_num(y)
     xy = np.vstack([x, y])
     z = gaussian_kde(xy)(xy)
-    ax1.scatter(x, y,  c=z, s=25, edgecolor='', cmap='Blues', alpha=0.7)
-    ax1.scatter(x, An_ct, color='black', s=5, alpha=0.7)
+    ax1.scatter(x, y,  c=z, s=25, edgecolor='', cmap='Blues', alpha=0.7,
+                label="CT")
+    ax1.scatter(x, dummy, s=25, edgecolor='', alpha=0.7, label="HW")
+    ax1.scatter(x, An_ct, color='black', s=5, alpha=0.7, label="Model")
+    ax1.legend(scatterpoints=1, loc="best", frameon=False)
+
+    legend = ax1.get_legend()
+    legend.legendHandles[0].set_color("blue")
+    legend.legendHandles[1].set_color("red")
+    legend.legendHandles[2].set_color("black")
+
 
     x = df_hw.TargTempC_Avg
     y = df_hw.Photo
