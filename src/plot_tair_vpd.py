@@ -94,8 +94,12 @@ def main(fname):
     ax1.set_ylim(0, 45)
     ax1.set_ylabel('Temperature ($^\circ$C)')
     ax2.set_ylabel('VPD (kPa)')
+    ax1.get_yaxis().set_label_coords(-0.07,0.5)
+    ax2.get_yaxis().set_label_coords(-0.07,0.5)
     ax1.legend(numpoints=1, loc="lower left")
-    fig.savefig("plots/tair_vpd.pdf", bbox_inches='tight', pad_inches=0.1)
+    #fig.savefig("plots/tair_vpd.pdf", bbox_inches='tight', pad_inches=0.1)
+    fig.savefig("plots/tair_vpd.png", dpi=300, bbox_inches='tight',
+                pad_inches=0.1)
     #plt.show()
 
 def read_file(fname):
