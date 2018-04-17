@@ -62,7 +62,6 @@ def main(fname):
     # Misc stuff
     leaf_width = 0.01
     SW_abs = 0.86 # absorptance to short_wave rad [0,1], typically 0.4-0.6
-    leaf_absorptance = 0.86
 
     # variables though obviously fixed here.
     wind = 8.0
