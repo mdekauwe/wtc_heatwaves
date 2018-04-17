@@ -138,7 +138,7 @@ def main(fname):
     ax1.set_ylim(0, 4)
     ax1.set_xlim(15, 50)
 
-    ax1.set_ylabel('E$_{canopy}$ (mmol m$^{-2}$ d$^{-1}$)')
+    ax1.set_ylabel('E$_{canopy}$ (mmol m$^{-2}$ s$^{-1}$)')
     ax1.set_xlabel('Canopy temperature ($^\circ$C)')
 
     fig.savefig("plots/g0_ftemp.pdf", bbox_inches='tight',

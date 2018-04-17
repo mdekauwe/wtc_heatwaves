@@ -76,17 +76,17 @@ def main(fname):
                      Eaj, Eav,deltaSj, deltaSv, Hdv, Hdj, Q10, leaf_width,
                      SW_abs, gs_model="medlyn")
 
-
+    #"""
     Et_ct = []
     An_ct = []
     Et_hw = []
     An_hw = []
     for i in range(len(df_ct)):
-
         (An, gsw, et, LE) = C.main(df_ct.Tair_al[i], df_ct.PAR[i], df_ct.VPD[i],
                                    wind, pressure, Ca)
         Et_ct.append(et* c.MOL_2_MMOL) # mmol m-2 s-1
         An_ct.append(An)               # umol m-2 s-1
+    #"""
 
     Et_hw = []
     An_hw = []
@@ -96,6 +96,7 @@ def main(fname):
                                    wind, pressure, Ca)
         Et_hw.append(et * c.MOL_2_MMOL) # mmol m-2 s-1
         An_hw.append(An)                # umol m-2 s-1
+
 
     # roughly paper size
     #width  = 8.0
@@ -166,8 +167,8 @@ def main(fname):
     ax4.scatter(x, y,  c=z, s=25, edgecolor='', cmap='Reds', alpha=0.7)
     ax4.scatter(x, Et_hw, color='black', s=5, alpha=0.7)
 
-    ax1.set_ylim(0, 15)
-    ax2.set_ylim(0, 15)
+    ax1.set_ylim(-1, 15)
+    ax2.set_ylim(-1, 15)
     ax3.set_ylim(0, 4)
     ax4.set_ylim(0, 4)
     ax1.set_xlim(15, 50)
@@ -185,8 +186,8 @@ def main(fname):
     ax2.locator_params(nbins=4, axis='x')
     ax4.locator_params(nbins=4, axis='x')
 
-    ax1.set_ylabel(u'A$_{canopy}$ (μmol m$^{-2}$ d$^{-1}$)')
-    ax3.set_ylabel('E$_{canopy}$ (mmol m$^{-2}$ d$^{-1}$)')
+    ax1.set_ylabel(u'A$_{canopy}$ (μmol m$^{-2}$ s$^{-1}$)')
+    ax3.set_ylabel('E$_{canopy}$ (mmol m$^{-2}$ s$^{-1}$)')
     ax3.set_xlabel('Canopy temperature ($^\circ$C)', position=(1.0, 0.5))
     ax1.get_yaxis().set_label_coords(-0.15,0.5)
     ax3.get_yaxis().set_label_coords(-0.15,0.5)
