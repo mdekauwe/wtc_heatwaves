@@ -89,7 +89,7 @@ def main(fname):
     Et_hw = []
     An_hw = []
     for i in range(len(df_ct)):
-        (An, gsw, et, LE) = C.main_fast(df_ct.Tair_al[i], df_ct.PAR[i], df_ct.VPD[i],
+        (An, gsw, et, LE) = C.main(df_ct.Tair_al[i], df_ct.PAR[i], df_ct.VPD[i],
                                    wind, pressure, Ca)
         Et_ct.append(et* c.MOL_2_MMOL) # mmol m-2 s-1
         An_ct.append(An)               # umol m-2 s-1
@@ -145,7 +145,7 @@ def main(fname):
     legend.legendHandles[0].set_color("blue")
     legend.legendHandles[1].set_color("red")
     legend.legendHandles[2].set_color("black")
-    
+
     legend.legendHandles[0]._sizes = [60]
     legend.legendHandles[1]._sizes = [60]
     legend.legendHandles[2]._sizes = [60]
