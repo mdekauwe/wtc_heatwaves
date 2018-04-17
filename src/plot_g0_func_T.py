@@ -110,11 +110,11 @@ def main(fname):
     plt.rcParams['text.usetex'] = False
     plt.rcParams['font.family'] = "sans-serif"
     plt.rcParams['font.sans-serif'] = "Helvetica"
-    plt.rcParams['axes.labelsize'] = 14
-    plt.rcParams['font.size'] = 14
-    plt.rcParams['legend.fontsize'] = 14
-    plt.rcParams['xtick.labelsize'] = 14
-    plt.rcParams['ytick.labelsize'] = 14
+    plt.rcParams['axes.labelsize'] = 20
+    plt.rcParams['font.size'] = 18
+    plt.rcParams['legend.fontsize'] = 18
+    plt.rcParams['xtick.labelsize'] = 18
+    plt.rcParams['ytick.labelsize'] = 18
 
     ax1 = fig.add_subplot(111)
 
@@ -128,9 +128,13 @@ def main(fname):
     ax1.scatter(x, Et_hw, color='black', s=5, alpha=0.7, label="Model")
     ax1.scatter(x, Et_hw2, color='green', s=5, alpha=0.7, label="g$_0$=f(temp)")
 
-    ax1.legend(scatterpoints=1, loc="upper right", frameon=False)
+    ax1.legend(scatterpoints=1, loc="upper right", frameon=False,
+               handletextpad=0.1)
     legend = ax1.get_legend()
     legend.legendHandles[0].set_color("red")
+    legend.legendHandles[0]._sizes = [60]
+    legend.legendHandles[1]._sizes = [60]
+    legend.legendHandles[2]._sizes = [60]
 
     ax1.locator_params(nbins=4, axis='x')
     ax1.locator_params(nbins=4, axis='y')
@@ -141,7 +145,9 @@ def main(fname):
     ax1.set_ylabel('E$_{canopy}$ (mmol m$^{-2}$ s$^{-1}$)')
     ax1.set_xlabel('Canopy temperature ($^\circ$C)')
 
-    fig.savefig("plots/g0_ftemp.pdf", bbox_inches='tight',
+    #fig.savefig("plots/g0_ftemp.pdf", bbox_inches='tight',
+    #            pad_inches=0.1)
+    fig.savefig("plots/g0_ftemp.png", dpi=300, bbox_inches='tight',
                 pad_inches=0.1)
     #plt.show()
 

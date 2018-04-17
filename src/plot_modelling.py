@@ -78,7 +78,7 @@ def main(fname):
 
 
 
-    #An, gsw, et, LE) = C.main(45., 2000.0, 4.0,
+    #(An, gsw, et, LE) = C.main(45., 2000.0, 4.0,
     #                           wind, pressure, Ca)
     #print(An, gsw, et, LE)
     #sys.exit()
@@ -89,7 +89,7 @@ def main(fname):
     Et_hw = []
     An_hw = []
     for i in range(len(df_ct)):
-        (An, gsw, et, LE) = C.main(df_ct.Tair_al[i], df_ct.PAR[i], df_ct.VPD[i],
+        (An, gsw, et, LE) = C.main_fast(df_ct.Tair_al[i], df_ct.PAR[i], df_ct.VPD[i],
                                    wind, pressure, Ca)
         Et_ct.append(et* c.MOL_2_MMOL) # mmol m-2 s-1
         An_ct.append(An)               # umol m-2 s-1
@@ -139,13 +139,16 @@ def main(fname):
                 label="CT")
     ax1.scatter(x, dummy, s=25, edgecolor='', alpha=0.7, label="HW")
     ax1.scatter(x, An_ct, color='black', s=5, alpha=0.7, label="Model")
-    ax1.legend(scatterpoints=1, loc="best", frameon=False)
+    ax1.legend(scatterpoints=1, loc="best", frameon=False, handletextpad=0.1)
 
     legend = ax1.get_legend()
     legend.legendHandles[0].set_color("blue")
     legend.legendHandles[1].set_color("red")
     legend.legendHandles[2].set_color("black")
-
+    
+    legend.legendHandles[0]._sizes = [60]
+    legend.legendHandles[1]._sizes = [60]
+    legend.legendHandles[2]._sizes = [60]
 
     x = df_hw.TargTempC_Avg
     y = df_hw.Photo
@@ -174,8 +177,8 @@ def main(fname):
     ax4.scatter(x, y,  c=z, s=25, edgecolor='', cmap='Reds', alpha=0.7)
     ax4.scatter(x, Et_hw, color='black', s=5, alpha=0.7)
 
-    ax1.set_ylim(0, 15)
-    ax2.set_ylim(0, 15)
+    ax1.set_ylim(-1, 15)
+    ax2.set_ylim(-1, 15)
     ax3.set_ylim(0, 4)
     ax4.set_ylim(0, 4)
     ax1.set_xlim(15, 50)
@@ -196,14 +199,16 @@ def main(fname):
     ax1.set_ylabel(u'A$_{canopy}$ (μmol m$^{-2}$ s$^{-1}$)')
     ax3.set_ylabel('E$_{canopy}$ (mmol m$^{-2}$ s$^{-1}$)')
     ax3.set_xlabel('Canopy temperature ($^\circ$C)', position=(1.0, 0.5))
-    ax1.get_yaxis().set_label_coords(-0.15,0.5)
-    ax3.get_yaxis().set_label_coords(-0.15,0.5)
+    ax1.get_yaxis().set_label_coords(-0.1,0.5)
+    ax3.get_yaxis().set_label_coords(-0.1,0.5)
 
     plt.setp(ax1.get_xticklabels(), visible=False)
     plt.setp(ax2.get_xticklabels(), visible=False)
     plt.setp(ax2.get_yticklabels(), visible=False)
     plt.setp(ax4.get_yticklabels(), visible=False)
-    fig.savefig("plots/exp_plus_modellng.pdf", bbox_inches='tight',
+    #fig.savefig("plots/exp_plus_modellng.pdf", bbox_inches='tight',
+    #            pad_inches=0.1)
+    fig.savefig("plots/exp_plus_modellng.png", dpi=300, bbox_inches='tight',
                 pad_inches=0.1)
     #plt.show()
 
