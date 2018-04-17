@@ -62,11 +62,11 @@ def main(fname):
     # Misc stuff
     leaf_width = 0.01
     SW_abs = 0.86 # absorptance to short_wave rad [0,1], typically 0.4-0.6
-
+    leaf_absorptance = 0.86
 
     # variables though obviously fixed here.
     wind = 8.0
-    pressure = 100.0 * c.KPA_2_PA
+    pressure = 101.0 * c.KPA_2_PA
     g0 = 0.003
     g1 = 2.9
     Ca = 400.
@@ -75,6 +75,13 @@ def main(fname):
     C = CoupledModel(g0, g1, D0, gamma, Vcmax25, Jmax25, Rd25,
                      Eaj, Eav,deltaSj, deltaSv, Hdv, Hdj, Q10, leaf_width,
                      SW_abs, gs_model="medlyn")
+
+
+
+    #An, gsw, et, LE) = C.main(45., 2000.0, 4.0,
+    #                           wind, pressure, Ca)
+    #print(An, gsw, et, LE)
+    #sys.exit()
 
     #"""
     Et_ct = []
@@ -167,8 +174,8 @@ def main(fname):
     ax4.scatter(x, y,  c=z, s=25, edgecolor='', cmap='Reds', alpha=0.7)
     ax4.scatter(x, Et_hw, color='black', s=5, alpha=0.7)
 
-    ax1.set_ylim(-1, 15)
-    ax2.set_ylim(-1, 15)
+    ax1.set_ylim(0, 15)
+    ax2.set_ylim(0, 15)
     ax3.set_ylim(0, 4)
     ax4.set_ylim(0, 4)
     ax1.set_xlim(15, 50)
